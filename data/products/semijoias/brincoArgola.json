@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "url": "/assets/img/semijoias/brincoArgola/IMG_20260806_130831784.jpg",
+    "valor": 19.9,
+    "status": "disponivel",
+    "descricao": "Argola pequena de tarraxa",
+    "informacoes": "Garantia de 2 anos.\nTamanho único.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 2,
+    "url": "/assets/img/semijoias/brincoArgola/IMG_20260806_130848035.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Argola tubo quadrado com detalhes",
+    "informacoes": "Garantia de 2 anos.\nDisponível no tamanho 22.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 3,
+    "url": "/assets/img/semijoias/brincoArgola/IMG_20260806_130901745.jpg",
+    "valor": 19.9,
+    "status": "disponivel",
+    "descricao": "Argola 35mm",
+    "informacoes": "Garantia de 2 anos.\nDisponível no tamanho 22.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 4,
+    "url": "/assets/img/semijoias/brincoArgola/IMG_20260806_130921585.jpg",
+    "valor": 24.9,
+    "descricao": "Argola fio liso",
+    "informacoes": "Garantia de 2 anos.\nDisponível no tamanho 16.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 5,
+    "url": "/assets/img/semijoias/brincoArgola/IMG_20260806_130949006.jpg",
+    "valor": 29.9,
+    "descricao": "Argola encerada lisa",
+    "informacoes": "Garantia de 2 anos.\nTamanho único ajustável.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  }
+]

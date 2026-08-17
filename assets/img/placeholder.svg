@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5c1838" />
+      <stop offset="100%" stop-color="#3d0f25" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5d77f" />
+      <stop offset="100%" stop-color="#c8963e" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bgGrad)" />
+  <circle cx="300" cy="300" r="280" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.3" />
+  <circle cx="300" cy="300" r="260" fill="none" stroke="url(#goldGrad)" stroke-width="1" opacity="0.2" />
+  <g transform="translate(300, 240)">
+    <!-- Camera / Diamond icon -->
+    <path d="M-40,-30 L-20,-50 L20,-50 L40,-30 L50,-30 C55.5,-30 60,-25.5 60,-20 L60,40 C60,45.5 55.5,50 50,50 L-50,50 C-55.5,50 -60,45.5 -60,40 L-60,-20 C-60,-25.5 -55.5,-30 -50,-30 Z" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-linejoin="round" />
+    <circle cx="0" cy="10" r="22" fill="none" stroke="url(#goldGrad)" stroke-width="4" />
+    <circle cx="35" cy="-10" r="5" fill="url(#goldGrad)" />
+  </g>
+  <text x="300" y="370" font-family="'Playfair Display', Georgia, serif" font-size="28" font-weight="600" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="2">CAROL ALVES</text>
+  <text x="300" y="410" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" fill="#e2c8a0" text-anchor="middle" letter-spacing="4" opacity="0.8">FOTO EM BREVE</text>
+</svg>

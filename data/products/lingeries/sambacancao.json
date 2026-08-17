@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "url": "/assets/img/placeholder.svg",
+    "cores": [
+      "Preto"
+    ],
+    "valor": 35.9,
+    "status": "disponivel",
+    "tamanhos": [
+      "M"
+    ],
+    "descricao": "SAMBA CANÇÃO RCL - REF: 450",
+    "variacoes": [
+      {
+        "cor": "Preto",
+        "tamanho": "M",
+        "vendido": false,
+        "quantidade": 1
+      }
+    ],
+    "emPromocao": false,
+    "quantidade": 1,
+    "informacoes": "Valor referente a unidade.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições.",
+    "precoPromocional": null
+  }
+]

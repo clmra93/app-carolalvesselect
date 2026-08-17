@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "url": "/assets/img/semijoias/aneis/IMG_20260806_104421449.jpg",
+    "valor": 14.9,
+    "descricao": "Anel Infantil com ajuste",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 2,
+    "url": "/assets/img/semijoias/aneis/IMG_20260806_104815949.jpg",
+    "valor": 29.9,
+    "status": "vendido",
+    "descricao": "Anel falange com pedrinhas",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 3,
+    "url": "/assets/img/semijoias/aneis/IMG_20260806_125458756.jpg",
+    "valor": 69.9,
+    "status": "disponivel",
+    "descricao": "Anel cravejado - tam. 20",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 4,
+    "url": "/assets/img/semijoias/aneis/IMG_20260806_131034050.jpg",
+    "valor": 29.9,
+    "status": "vendido",
+    "descricao": "Anel de aço coração",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nAnel de falange.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 5,
+    "url": "/assets/img/semijoias/aneis/IMG_20260806_131133023.jpg",
+    "valor": 29.9,
+    "descricao": "Anel de aço trevo",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nDisponível no tamanho 14.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  }
+]

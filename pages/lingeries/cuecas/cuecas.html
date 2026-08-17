@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Cuecas</title>
+    <!-- PWA Settings -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#5c1838" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Carol Alves" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png" />
+    <script src="/js/pwa.js" defer></script>
+      <script src="/js/cart.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="div-principal">
+        <h1>Cuecas</h1>
+      </div>
+    </header>
+    <main class="div-main">
+      <h1>Nossos Produtos</h1>
+      <div
+        id="container-produtos"
+        class="grid-produtos"
+        data-setor="lingeries"
+        data-categoria="cuecas"
+      ></div>
+      <div class="div-2">
+        <a href="/pages/lingeries/index.html" class="link-retornar-anterior">Retornar à página anterior</a>
+      </div>
+    </main>
+    <footer>
+      <div class=\"div-footer\">
+        <p>
+          Copyright © 2026 Revendedora Carol Alves. Todos os direitos
+          reservados.
+         | <a href=\"/pages/admin/index.html\" class=\"link-admin-footer\" style=\"color: #5c1838; font-weight: bold; text-decoration: underline;\">Painel Administrativo</a></p>
+      </div>
+    </footer>
+    <div id="zoom-modal" class="zoom-modal">
+      <span class="zoom-fechar">&times;</span>
+      <button class="zoom-seta zoom-prev" id="zoom-prev">&#10094;</button>
+      <img
+        class="zoom-conteudo"
+        id="img-ampliada"
+        alt="Imagem ampliada do produto"
+      />
+      <button class="zoom-seta zoom-next" id="zoom-next">&#10095;</button>
+    </div>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

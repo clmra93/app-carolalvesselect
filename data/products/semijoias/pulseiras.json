@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "url": "/assets/img/semijoias/pulseiras/IMG_20260806_130507099.jpg",
+    "valor": 39.9,
+    "descricao": "Pulseira infantil",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 2,
+    "url": "/assets/img/semijoias/pulseiras/IMG_20260806_130735178.jpg",
+    "valor": 59.9,
+    "descricao": "Pulseira detalhes em pérolas",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 3,
+    "url": "/assets/img/semijoias/pulseiras/IMG_20260806_130759062.jpg",
+    "valor": 69.9,
+    "descricao": "Pulseira Placas Circulares",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 4,
+    "url": "/assets/img/semijoias/pulseiras/IMG_20260806_132120685.jpg",
+    "valor": 24.9,
+    "descricao": "Pulseira correntinha",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 5,
+    "url": "/assets/img/semijoias/pulseiras/IMG_20260806_132144702.jpg",
+    "valor": 49.9,
+    "descricao": "Pulseira Elos Encantados",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 6,
+    "url": "/assets/img/semijoias/pulseiras/IMG_20260806_132211513.jpg",
+    "valor": 59.9,
+    "descricao": "Pulseira corações",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 7,
+    "url": "/assets/img/semijoias/pulseiras/IMG_20260806_132225128.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Pulseira Elo Oval",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  }
+]

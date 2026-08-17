@@ -1,0 +1,8 @@
+{
+  "name": "Catálogo Carol Alves",
+  "description": "Catálogo de produtos da revendedora Carol Alves - Lingeries e Semi-Joias",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

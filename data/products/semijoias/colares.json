@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "url": "/assets/img/semijoias/colares/IMG_20260806_104533311.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Colar esfera",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 2,
+    "url": "/assets/img/semijoias/colares/IMG_20260806_130051222.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Colar com pingente borboleta",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 3,
+    "url": "/assets/img/semijoias/colares/IMG_20260806_130410519.jpg",
+    "valor": 69.9,
+    "status": "disponivel",
+    "descricao": "Colar com pingente gota",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 4,
+    "url": "/assets/img/semijoias/colares/IMG_20260806_131528641.jpg",
+    "valor": 79.9,
+    "status": "disponivel",
+    "descricao": "Colar com pingente coruja",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 5,
+    "url": "/assets/img/semijoias/colares/IMG_20260806_131605713.jpg",
+    "valor": 99.9,
+    "status": "disponivel",
+    "descricao": "Chocker com pedras negras",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 6,
+    "url": "/assets/img/semijoias/colares/IMG_20260806_131628578.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Chocker com pequenas pedras negras",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  }
+]

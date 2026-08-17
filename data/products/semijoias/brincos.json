@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_104742189.jpg",
+    "valor": 9.9,
+    "status": "disponivel",
+    "descricao": "Brinco oval vazado",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 2,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_125415030.jpg",
+    "valor": 29.9,
+    "status": "disponivel",
+    "descricao": "Trio de brincos infantis borboleta",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 3,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_125719505.jpg",
+    "valor": 11.9,
+    "status": "disponivel",
+    "descricao": "Brinco infantil coração",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 4,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_125743999.jpg",
+    "valor": 16.9,
+    "status": "disponivel",
+    "descricao": "Brinco infantil guarda-chuva",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 5,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_125933489.jpg",
+    "valor": 29.9,
+    "status": "disponivel",
+    "descricao": "Brinco infantil ursinho",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 6,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_130639211.jpg",
+    "valor": 29.9,
+    "status": "disponivel",
+    "descricao": "Brinco quadros lisos",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 7,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_130710896.jpg",
+    "valor": 24.9,
+    "status": "disponivel",
+    "descricao": "Brinco pequeno",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 8,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_131737811.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Brinco chapa circular",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 9,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_131818367.jpg",
+    "valor": 59.9,
+    "status": "disponivel",
+    "descricao": "Brinco folha",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 10,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_131916323.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Brinco círculos",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 11,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_131943488.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Brinco gotas",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 12,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132001025.jpg",
+    "valor": 29.9,
+    "status": "disponivel",
+    "descricao": "Brinco gota quadriculada",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 13,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132040178.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Brinco Folha",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 14,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132104264.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Brinco Lacraia",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 15,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132255243.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Trio brincos pedrinhas",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 16,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132338437.jpg",
+    "valor": 29.9,
+    "status": "disponivel",
+    "descricao": "Trio brincos Lua",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 17,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132357496.jpg",
+    "valor": 10.9,
+    "status": "disponivel",
+    "descricao": "Brinco pérola",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 18,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132514317.jpg",
+    "valor": 13.9,
+    "status": "disponivel",
+    "descricao": "Brinco Flor",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 19,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132532998.jpg",
+    "valor": 7.9,
+    "status": "disponivel",
+    "descricao": "Brinco Borboleta",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 20,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132556575.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Brinco Raposa",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 21,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132614685.jpg",
+    "valor": 59.9,
+    "status": "disponivel",
+    "descricao": "Brinco Circulos",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 22,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132720693.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Brinco molas",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 23,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132739757.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Brinco Losango",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 24,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132828752.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Brinco Bolinhas",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 25,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_132851614.jpg",
+    "valor": 49.9,
+    "status": "disponivel",
+    "descricao": "Brinco Gota",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 26,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_133755033.jpg",
+    "valor": 69.9,
+    "status": "disponivel",
+    "descricao": "Brinco Roseta",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 27,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_133804433.jpg",
+    "valor": 99.9,
+    "status": "disponivel",
+    "descricao": "Brinco Flor Trançada",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 28,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_133850122.jpg",
+    "valor": 59.9,
+    "status": "disponivel",
+    "descricao": "Brinco Folhas",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 29,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_133903712.jpg",
+    "valor": 59.9,
+    "status": "vendido",
+    "descricao": "Brinco Folha",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 30,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_133925252.jpg",
+    "valor": 79.9,
+    "status": "disponivel",
+    "descricao": "Brinco Trevinho",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 31,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134013170.jpg",
+    "valor": 34.9,
+    "status": "disponivel",
+    "descricao": "Brinco Coração",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 32,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134023373.jpg",
+    "valor": 79.9,
+    "status": "disponivel",
+    "descricao": "Brinco Molas",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 33,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134053380.jpg",
+    "valor": 24.9,
+    "status": "disponivel",
+    "descricao": "Trio brincos triangulo",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 34,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134422589.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Brinco Trevo",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 35,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134429167.jpg",
+    "valor": 29.9,
+    "status": "disponivel",
+    "descricao": "Brinco Espiral",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 36,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134437278.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Trio pedrinhas verdes",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 37,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134446957.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Brinco chapa circular",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 38,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134453320.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Brinco Chapa Detalhes",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 39,
+    "url": "/assets/img/semijoias/brincos/IMG_20260806_134501442.jpg",
+    "valor": 29.9,
+    "status": "disponivel",
+    "descricao": "Brinco Trevo Pequeno",
+    "informacoes": "Valor referente ao par.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  }
+]

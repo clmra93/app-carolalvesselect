@@ -1,0 +1,30 @@
+{
+  "lingeries": {
+    "meias": "Meias",
+    "cuecas": "Cuecas",
+    "topper": "Toppers",
+    "bermuda": "Bermudas",
+    "pijamas": "Pijamas",
+    "conjunto": "Conjuntos",
+    "infantil": "Infantil",
+    "soutiens": "Soutiens",
+    "calcinhas": "Calcinhas",
+    "camisolas": "Camisolas",
+    "sambacancao": "Samba Canção",
+    "shortanagua": "Short Anágua"
+  },
+  "semijoias": {
+    "aneis": "Anéis",
+    "brincos": "Brincos",
+    "colares": "Colares & Cordões",
+    "bracelete": "Braceletes",
+    "conjuntos": "Conjuntos",
+    "correntes": "Correntes (Sem Pingente)",
+    "pingentes": "Pingentes",
+    "pulseiras": "Pulseiras",
+    "braceletes": "Braceletes",
+    "brincoArgola": "Brincos de Argola",
+    "gargantilhas": "Gargantilhas",
+    "tornozeleiras": "Tornozeleiras"
+  }
+}

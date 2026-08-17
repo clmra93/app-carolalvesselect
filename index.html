@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Catálogo Carol Alves</title>
+    <!-- PWA Settings -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#5c1838" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Carol Alves" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png" />
+    <script src="/js/pwa.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="div-principal">
+        <h1>Carol Alves</h1>
+        <p>Realçando a beleza que já existe em você!</p>
+      </div>
+    </header>
+    <main class="main-principal">
+      <div class="div-ul">
+        <ul id="home-links-list">
+          <li>
+            <a href="/pages/semijoias/index.html">Catálogo Semi-Joias Styllus</a>
+          </li>
+          <li>
+            <a href="/pages/lingeries/index.html">Catálogo Lingeries Bella</a>
+          </li>
+          <li>
+            <a href="https://minhaloja.grupoboticario.com.br/carollalves" target="_blank"
+              >Minha Loja - Grupo Boticário</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://catalogoportaaporta.cancaonova.com/gv-editora/cancao-nova/catalogo/" target="_blank"
+              >Catálogo Porta a Porta</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://loja.marykay.com.br/minha-vitrine?slug=carolalvesmk" target="_blank"
+              >Minha Loja - Mary Kay</a
+            >
+          </li>
+          <li>
+            <a href="https://agreements.marykayintouch.com.br/r/c7oj5g1k" target="_blank"
+              >Faça seu cadastro - Mary Kay</a
+            >
+          </li>
+          <li>
+            <a href="https://collshp.com/calummara" target="_blank">Coleção Shopee</a>
+          </li>
+          <li class="btn-pwa-install-item">
+            <a href="javascript:void(0)" class="btn-pwa-install" style="display: none; background: #5c1838; color: white; font-weight: bold; border-radius: 8px; justify-content: center;">
+              📱 Instalar Aplicativo na Tela Inicial
+            </a>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer>
+      <div class="div-footer">
+        <p>
+          Copyright © 2026 Revendedora Carol Alves. Todos os direitos
+          reservados. | <a href="/pages/admin/index.html" class="link-admin-footer" style="color: #5c1838; font-weight: bold; text-decoration: underline; padding: 4px 8px; cursor: pointer;">Painel Administrativo</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      async function carregarLinksHome() {
+        try {
+          const timestamp = Date.now();
+          const response = await fetch(`/api/links?_t=${timestamp}`, {
+            cache: 'no-store',
+            headers: {
+              'Cache-Control': 'no-cache, no-store, must-revalidate',
+              'Pragma': 'no-cache'
+            }
+          });
+          if (!response.ok) return;
+          const links = await response.json();
+          if (Array.isArray(links)) {
+            const listElement = document.getElementById('home-links-list');
+            const pwaBtnItem = document.querySelector('.btn-pwa-install-item');
+            const pwaHtml = pwaBtnItem ? pwaBtnItem.outerHTML : '';
+            
+            const visibleLinks = links.filter(link => !link.oculto && link.visivel !== false);
+            listElement.innerHTML = visibleLinks.map(link => {
+              const isExternal = link.tipo === 'externo';
+              return `
+                <li>
+                  <a href="${link.url}" ${isExternal ? 'target="_blank"' : ''}>${link.titulo}</a>
+                </li>
+              `;
+            }).join('') + pwaHtml;
+          }
+        } catch (e) {
+          console.log('Usando links padrao');
+        }
+      }
+      carregarLinksHome();
+      window.addEventListener('focus', carregarLinksHome);
+      window.addEventListener('pageshow', carregarLinksHome);
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') carregarLinksHome();
+      });
+
+      try {
+        if ('BroadcastChannel' in window) {
+          const syncChannel = new BroadcastChannel('catalogo_sync_channel');
+          syncChannel.onmessage = (event) => {
+            if (event.data && event.data.action === 'refresh') {
+              carregarLinksHome();
+            }
+          };
+        }
+      } catch (e) {}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "url": "/pages/semijoias/index.html",
+    "tipo": "interno",
+    "titulo": "Catálogo Semi-Joias Styllus",
+    "urlOriginal": "/pages/semijoias/index.html",
+    "tipoOriginal": "interno"
+  },
+  {
+    "id": 2,
+    "url": "/pages/lingeries/index.html",
+    "tipo": "interno",
+    "titulo": "Catálogo Lingeries Bella",
+    "urlOriginal": "/pages/lingeries/index.html",
+    "tipoOriginal": "interno"
+  },
+  {
+    "id": 3,
+    "url": "https://minhaloja.grupoboticario.com.br/carollalves",
+    "tipo": "externo",
+    "oculto": false,
+    "titulo": "Minha Loja - Grupo Boticário",
+    "urlOriginal": "https://minhaloja.grupoboticario.com.br/carollalves",
+    "tipoOriginal": "externo"
+  },
+  {
+    "id": 4,
+    "url": "https://catalogoportaaporta.cancaonova.com/gv-editora/cancao-nova/catalogo/",
+    "tipo": "externo",
+    "titulo": "Catálogo Porta a Porta",
+    "urlOriginal": "https://catalogoportaaporta.cancaonova.com/gv-editora/cancao-nova/catalogo/",
+    "tipoOriginal": "externo"
+  },
+  {
+    "id": 5,
+    "url": "https://loja.marykay.com.br/minha-vitrine?slug=carolalvesmk",
+    "tipo": "externo",
+    "titulo": "Minha Loja - Mary Kay",
+    "urlOriginal": "https://loja.marykay.com.br/minha-vitrine?slug=carolalvesmk",
+    "tipoOriginal": "externo"
+  },
+  {
+    "id": 6,
+    "url": "https://agreements.marykayintouch.com.br/r/c7oj5g1k",
+    "tipo": "externo",
+    "titulo": "Faça seu cadastro - Mary Kay",
+    "urlOriginal": "https://agreements.marykayintouch.com.br/r/c7oj5g1k",
+    "tipoOriginal": "externo"
+  },
+  {
+    "id": 7,
+    "url": "https://collshp.com/calummara",
+    "tipo": "externo",
+    "titulo": "Coleção Shopee",
+    "urlOriginal": "https://collshp.com/calummara",
+    "tipoOriginal": "externo"
+  }
+]

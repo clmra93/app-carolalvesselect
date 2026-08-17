@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "url": "/assets/img/semijoias/conjuntos/IMG_20260806_130445808.jpg",
+    "valor": 39.9,
+    "status": "disponivel",
+    "descricao": "Conjunto infantil",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 2,
+    "url": "/assets/img/semijoias/conjuntos/IMG_20260806_131329050.jpg",
+    "valor": 69.9,
+    "status": "vendido",
+    "descricao": "Conjunto coração",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  },
+  {
+    "id": 3,
+    "url": "/assets/img/semijoias/conjuntos/IMG_20260806_131508906.jpg",
+    "valor": 69.9,
+    "status": "vendido",
+    "descricao": "Conjunto trevo",
+    "informacoes": "Valor referente a unidade.\nGarantia de 2 anos.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições."
+  }
+]

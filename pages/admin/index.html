@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo | Carol Alves</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- PWA Settings -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#5c1838">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Carol Alves">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+  <script src="/js/pwa.js" defer></script>
+</head>
+<body class="admin-body">
+
+  <!-- LOGIN CONTAINER -->
+  <div id="login-screen" class="login-container">
+    <div class="login-card">
+      <div class="login-icon">🔒</div>
+      <h2 style="color: #5c1838; margin-bottom: 8px;">Painel Administrativo</h2>
+      <p style="color: #666; margin-bottom: 25px; font-style: normal;">Informe seu e-mail e PIN de acesso para continuar</p>
+      <form id="login-form" autocomplete="off">
+        <div class="form-group" style="text-align: left;">
+          <label for="email-input" style="font-size: 0.85rem; color: #555; font-weight: 600;">E-mail do Administrador</label>
+          <input type="email" id="email-input" name="admin_login_email" class="form-control" placeholder="Digite seu e-mail de administrador" required autocomplete="off" autocapitalize="none" spellcheck="false" value="" style="font-size: 1rem;">
+        </div>
+        <div class="form-group" style="text-align: left;">
+          <label for="pin-input" style="font-size: 0.85rem; color: #555; font-weight: 600;">PIN / Senha de Acesso</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="pin-input" name="admin_login_pin" class="form-control" placeholder="Digite seu PIN" required autocomplete="new-password" value="" style="font-size: 1.1rem; letter-spacing: 3px;">
+            <button type="button" class="btn-toggle-password" data-target="pin-input" title="Visualizar senha" aria-label="Visualizar senha">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="admin-btn admin-btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem; margin-top: 10px;">
+          <i class="fas fa-sign-in-alt"></i> Entrar no Painel
+        </button>
+        <div id="login-error" style="color: var(--admin-danger); font-size: 0.85rem; margin-top: 12px; display: none;"></div>
+        <div style="margin-top: 20px; text-align: center; border-top: 1px solid #f0d5e2; padding-top: 15px;">
+          <a href="/" class="admin-link-retornar" style="color: #5c1838; text-decoration: underline; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+            <i class="fas fa-arrow-left"></i> Retornar ao Catálogo
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN APP CONTAINER -->
+  <div id="admin-app" style="display: none;">
+    <!-- HEADER -->
+    <header class="admin-header">
+      <h1>
+        <i class="fas fa-sliders-h"></i> Painel Carol Alves
+      </h1>
+      <div class="admin-header-actions">
+        <div class="user-badge" id="logged-user-display" style="display: flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.8); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: #5c1838; border: 1px solid var(--admin-border);">
+          <i class="fas fa-user-circle" style="font-size: 1.1rem; color: var(--admin-primary);"></i>
+          <span id="user-email-span">Administrador</span>
+        </div>
+        <a href="/" class="admin-btn admin-btn-secondary">
+          <i class="fas fa-external-link-alt"></i> Ver Site
+        </a>
+        <button id="btn-change-pin" class="admin-btn admin-btn-secondary">
+          <i class="fas fa-user-shield"></i> Credenciais
+        </button>
+        <button id="btn-logout" class="admin-btn admin-btn-danger">
+          <i class="fas fa-sign-out-alt"></i> Sair
+        </button>
+      </div>
+    </header>
+
+    <!-- AUTO-RECOVERY NOTIFICATION BANNER (When Local Browser Backup is newer than server) -->
+    <div id="reset-recovery-banner" style="display: none; background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%); border: 1px solid #ffeeba; border-left: 5px solid #ffc107; padding: 14px 20px; margin: 15px auto; max-width: 1200px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <i class="fas fa-shield-alt" style="font-size: 1.8rem; color: #856404;"></i>
+          <div>
+            <div style="font-weight: 700; color: #856404; font-size: 0.95rem;">
+              Recuperação Automática Disponível (Backup Local do Navegador)
+            </div>
+            <div style="font-size: 0.85rem; color: #664d03; margin-top: 2px;" id="reset-recovery-text">
+              Detectamos que você possui um backup mais recente salvo no navegador (<span id="recovery-prods-count">0</span> produtos, salvo em <span id="recovery-date">--</span>).
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button id="btn-apply-browser-recovery" class="admin-btn admin-btn-primary admin-btn-sm" style="background: #5c1838; border-color: #5c1838;">
+            <i class="fas fa-magic"></i> Restaurar Dados do Meu Navegador
+          </button>
+          <button id="btn-dismiss-recovery" class="admin-btn admin-btn-secondary admin-btn-sm" style="color: #664d03;">
+            Ignorar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-container">
+      <!-- NAVIGATION TABS -->
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="tab-semijoias">
+          <i class="fas fa-gem"></i> Semi-Joias
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-lingeries">
+          <i class="fas fa-female"></i> Lingeries
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-links">
+          <i class="fas fa-file-alt"></i> Gerenciamento de Páginas
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-gallery">
+          <i class="fas fa-images"></i> Banco de Imagens
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-backup">
+          <i class="fas fa-database"></i> Backup & Persistência
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-logs">
+          <i class="fas fa-terminal"></i> Logs & Auditoria
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-lixeira">
+          <i class="fas fa-trash-alt"></i> Lixeira <span class="badge-count" id="badge-trash-count" style="background: var(--admin-danger); color: white; margin-left: 4px;">0</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: SEMI-JOIAS -->
+      <div id="tab-semijoias" class="tab-content">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span>Categorias de Semi-Joias</span>
+            <button class="admin-btn admin-btn-secondary admin-btn-sm btn-add-category" data-setor="semijoias">
+              <i class="fas fa-plus"></i> Nova Categoria
+            </button>
+          </div>
+          <div id="pills-semijoias" class="category-pills">
+            <!-- Dynamic Category Pills -->
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <!-- STATS BAR -->
+          <div class="stats-grid" id="stats-semijoias">
+            <div class="stat-box">
+              <div class="stat-number" id="stat-sj-total">0</div>
+              <div class="stat-label">Total de Produtos</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" id="stat-sj-disp" style="color: #198754;">0</div>
+              <div class="stat-label">Disponíveis</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" id="stat-sj-vend" style="color: #dc3545;">0</div>
+              <div class="stat-label">Vendidos</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" id="stat-sj-val" style="color: #5c1838;">R$ 0,00</div>
+              <div class="stat-label">Valor do Estoque</div>
+            </div>
+          </div>
+
+          <!-- TOOLBAR -->
+          <div class="admin-toolbar">
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <input type="text" id="search-sj" class="admin-search-input" placeholder="Buscar por nome ou código...">
+              <select id="filter-status-sj" class="admin-search-input" style="width: auto;">
+                <option value="todos">Todos os Status</option>
+                <option value="disponivel">Apenas Disponíveis</option>
+                <option value="vendido">Apenas Vendidos</option>
+              </select>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <button class="admin-btn admin-btn-primary btn-add-product" data-setor="semijoias">
+                <i class="fas fa-plus-circle"></i> Novo Produto
+              </button>
+              <label class="batch-select-label" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 12px; background: rgba(92, 24, 56, 0.08); border-radius: 6px; border: 1px solid rgba(92, 24, 56, 0.2); font-weight: 600; font-size: 0.85rem; color: #5c1838; user-select: none;">
+                <input type="checkbox" id="toggle-multi-sj" class="toggle-multi-select" data-setor="semijoias" style="accent-color: #5c1838; width: 18px; height: 18px; cursor: pointer;">
+                <span><i class="fas fa-tasks"></i> Selecionar Vários</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- BATCH ACTION BAR -->
+          <div id="batch-bar-sj" class="batch-action-bar" style="display: none; background: #fff3f3; border: 1px solid #ffcdd2; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <label style="display: inline-flex; align-items: center; gap: 6px; font-weight: bold; cursor: pointer; color: #333; font-size: 0.9rem;">
+                <input type="checkbox" id="select-all-sj" class="btn-select-all" data-setor="semijoias" style="accent-color: #5c1838; width: 18px; height: 18px; cursor: pointer;">
+                <span>Selecionar Todos</span>
+              </label>
+              <span id="selected-count-sj" style="font-size: 0.85rem; color: #666; font-weight: 600;">(0 selecionados)</span>
+            </div>
+            <button type="button" class="admin-btn admin-btn-danger btn-batch-delete" data-setor="semijoias" disabled style="opacity: 0.6; cursor: not-allowed;">
+              <i class="fas fa-trash-alt"></i> Excluir Selecionados (<span class="count-badge-sj">0</span>)
+            </button>
+          </div>
+
+          <!-- PRODUCT GRID -->
+          <div id="grid-sj" class="product-admin-grid">
+            <!-- Dynamic product cards -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: LINGERIES -->
+      <div id="tab-lingeries" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span>Categorias de Lingeries</span>
+            <button class="admin-btn admin-btn-secondary admin-btn-sm btn-add-category" data-setor="lingeries">
+              <i class="fas fa-plus"></i> Nova Categoria
+            </button>
+          </div>
+          <div id="pills-lingeries" class="category-pills">
+            <!-- Dynamic Category Pills -->
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <!-- STATS BAR -->
+          <div class="stats-grid" id="stats-lingeries">
+            <div class="stat-box">
+              <div class="stat-number" id="stat-lg-total">0</div>
+              <div class="stat-label">Total de Produtos</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" id="stat-lg-disp" style="color: #198754;">0</div>
+              <div class="stat-label">Disponíveis</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" id="stat-lg-vend" style="color: #dc3545;">0</div>
+              <div class="stat-label">Vendidos</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" id="stat-lg-val" style="color: #5c1838;">R$ 0,00</div>
+              <div class="stat-label">Valor do Estoque</div>
+            </div>
+          </div>
+
+          <!-- TOOLBAR -->
+          <div class="admin-toolbar">
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <input type="text" id="search-lg" class="admin-search-input" placeholder="Buscar por nome ou código...">
+              <select id="filter-status-lg" class="admin-search-input" style="width: auto;">
+                <option value="todos">Todos os Status</option>
+                <option value="disponivel">Apenas Disponíveis</option>
+                <option value="vendido">Apenas Vendidos</option>
+              </select>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <button class="admin-btn admin-btn-primary btn-add-product" data-setor="lingeries">
+                <i class="fas fa-plus-circle"></i> Novo Produto
+              </button>
+              <label class="batch-select-label" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 12px; background: rgba(92, 24, 56, 0.08); border-radius: 6px; border: 1px solid rgba(92, 24, 56, 0.2); font-weight: 600; font-size: 0.85rem; color: #5c1838; user-select: none;">
+                <input type="checkbox" id="toggle-multi-lg" class="toggle-multi-select" data-setor="lingeries" style="accent-color: #5c1838; width: 18px; height: 18px; cursor: pointer;">
+                <span><i class="fas fa-tasks"></i> Selecionar Vários</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- BATCH ACTION BAR -->
+          <div id="batch-bar-lg" class="batch-action-bar" style="display: none; background: #fff3f3; border: 1px solid #ffcdd2; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <label style="display: inline-flex; align-items: center; gap: 6px; font-weight: bold; cursor: pointer; color: #333; font-size: 0.9rem;">
+                <input type="checkbox" id="select-all-lg" class="btn-select-all" data-setor="lingeries" style="accent-color: #5c1838; width: 18px; height: 18px; cursor: pointer;">
+                <span>Selecionar Todos</span>
+              </label>
+              <span id="selected-count-lg" style="font-size: 0.85rem; color: #666; font-weight: 600;">(0 selecionados)</span>
+            </div>
+            <button type="button" class="admin-btn admin-btn-danger btn-batch-delete" data-setor="lingeries" disabled style="opacity: 0.6; cursor: not-allowed;">
+              <i class="fas fa-trash-alt"></i> Excluir Selecionados (<span class="count-badge-lg">0</span>)
+            </button>
+          </div>
+
+          <!-- PRODUCT GRID -->
+          <div id="grid-lg" class="product-admin-grid">
+            <!-- Dynamic product cards -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: GERENCIAMENTO DE PÁGINAS / LINKS DA HOME -->
+      <div id="tab-links" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span><i class="fas fa-file-alt"></i> Gerenciamento de Páginas e Links da Home</span>
+            <button id="btn-add-link" class="admin-btn admin-btn-primary">
+              <i class="fas fa-plus"></i> Adicionar Nova Página / Link
+            </button>
+          </div>
+          <p style="font-style: normal; text-align: left; color: #555; line-height: 1.5; margin-bottom: 15px;">
+            Gerencie os botões e páginas exibidos no catálogo inicial (Semi-Joias, Lingeries, O Boticário, Mary Kay, Shopee, etc.). Você pode <strong>ocultar ou mostrar</strong> qualquer página instantaneamente com o botão de visibilidade.
+          </p>
+
+          <table class="links-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">#</th>
+                <th>Título da Página / Link</th>
+                <th>URL / Destino</th>
+                <th style="width: 100px; text-align: center;">Tipo</th>
+                <th style="width: 110px; text-align: center;">Status</th>
+                <th style="width: 220px; text-align: center;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="links-tbody">
+              <!-- Dynamic Links -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 4: BANCO DE IMAGENS -->
+      <div id="tab-gallery" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span>Banco de Imagens e Uploads</span>
+            <div>
+              <input type="file" id="batch-upload-input" accept="image/*" multiple style="display: none;">
+              <button id="btn-batch-upload" class="admin-btn admin-btn-primary">
+                <i class="fas fa-cloud-upload-alt"></i> Enviar Fotos em Lote
+              </button>
+            </div>
+          </div>
+          <div id="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px;">
+            <!-- Dynamic gallery images -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: BACKUP & PERSISTÊNCIA -->
+      <div id="tab-backup" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span><i class="fas fa-database"></i> Backup & Persistência de Dados</span>
+          </div>
+          <p style="font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 20px; font-style: normal;">
+            Todas as alterações feitas no catálogo (produtos adicionados, editados, excluídos, categorias e links) são salvas imediatamente nos arquivos JSON locais e no armazenamento do navegador (IndexedDB / LocalStorage). 
+            Use os botões abaixo para <strong>exportar o backup completo</strong> ou <strong>restaurar seus dados</strong> com facilidade sempre que desejar.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <!-- CARD EXPORTAR -->
+            <div style="border: 1px solid rgba(92, 24, 56, 0.15); border-radius: 10px; padding: 20px; background: rgba(92, 24, 56, 0.02); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h4 style="color: #5c1838; margin-top: 0; margin-bottom: 8px; font-size: 1.05rem;">
+                  <i class="fas fa-download"></i> Exportar Dados (Backup Completo)
+                </h4>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 16px; line-height: 1.5;">
+                  Gera um arquivo JSON contendo todas as semi-joias, lingeries, categorias, links da página inicial e configurações de produtos atualizadas.
+                </p>
+              </div>
+              <button id="btn-export-backup-full" class="admin-btn admin-btn-primary" style="width: 100%; justify-content: center;">
+                <i class="fas fa-file-download"></i> Baixar Arquivo de Backup JSON
+              </button>
+            </div>
+
+            <!-- CARD IMPORTAR -->
+            <div style="border: 1px solid rgba(25, 135, 84, 0.2); border-radius: 10px; padding: 20px; background: rgba(25, 135, 84, 0.02); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h4 style="color: #198754; margin-top: 0; margin-bottom: 8px; font-size: 1.05rem;">
+                  <i class="fas fa-upload"></i> Restaurar / Importar Backup
+                </h4>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 16px; line-height: 1.5;">
+                  Selecione um arquivo de backup previamente exportado para restaurar instantaneamente todos os produtos, links e categorias no catálogo.
+                </p>
+              </div>
+              <div>
+                <input type="file" id="input-import-backup-file" accept=".json" style="display: none;">
+                <button id="btn-trigger-import-backup" class="admin-btn admin-btn-success" style="width: 100%; justify-content: center;">
+                  <i class="fas fa-file-upload"></i> Selecionar e Restaurar Backup
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="backup-status-msg" style="margin-top: 20px; display: none; padding: 12px 16px; border-radius: 8px; font-size: 0.9rem;"></div>
+
+          <!-- PERSISTÊNCIA & STATUS DO SERVIDOR -->
+          <div style="margin-top: 25px; border-top: 1px solid #eee; padding-top: 20px;">
+            <h4 style="color: #5c1838; margin-top: 0; margin-bottom: 12px; font-size: 1rem;">
+              <i class="fas fa-server"></i> Diagnóstico de Persistência & Prevenção de Reset
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+              <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 12px;">
+                <div style="font-size: 0.75rem; color: #6c757d; font-weight: 600; text-transform: uppercase;">Armazenamento Ativo</div>
+                <div id="diag-storage-type" style="font-size: 0.95rem; font-weight: 700; color: #212529; margin-top: 4px;">Carregando...</div>
+              </div>
+              <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 12px;">
+                <div style="font-size: 0.75rem; color: #6c757d; font-weight: 600; text-transform: uppercase;">Auto-Backup no Navegador</div>
+                <div id="diag-browser-backup" style="font-size: 0.95rem; font-weight: 700; color: #198754; margin-top: 4px;">Ativo (LocalStorage/IDB)</div>
+              </div>
+              <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 12px;">
+                <div style="font-size: 0.75rem; color: #6c757d; font-weight: 600; text-transform: uppercase;">Uptime do Servidor</div>
+                <div id="diag-uptime" style="font-size: 0.95rem; font-weight: 700; color: #5c1838; margin-top: 4px;">--</div>
+              </div>
+              <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 12px;">
+                <div style="font-size: 0.75rem; color: #6c757d; font-weight: 600; text-transform: uppercase;">ID da Instância</div>
+                <div id="diag-instance-id" style="font-size: 0.85rem; font-family: monospace; color: #495057; margin-top: 4px;">--</div>
+              </div>
+            </div>
+            <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+              <button id="btn-save-browser-snapshot" class="admin-btn admin-btn-secondary admin-btn-sm">
+                <i class="fas fa-save"></i> Salvar Snapshot Imediato no Meu Navegador
+              </button>
+              <button id="btn-force-sync-db" class="admin-btn admin-btn-secondary admin-btn-sm">
+                <i class="fas fa-sync-alt"></i> Forçar Sincronização Geral
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: LOGS & AUDITORIA -->
+      <div id="tab-logs" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <span><i class="fas fa-terminal"></i> Rastreamento por Logs & Auditoria do Sistema</span>
+            <div style="display: flex; gap: 8px;">
+              <button id="btn-refresh-logs" class="admin-btn admin-btn-secondary admin-btn-sm">
+                <i class="fas fa-redo"></i> Atualizar Logs
+              </button>
+              <button id="btn-clear-logs" class="admin-btn admin-btn-danger admin-btn-sm">
+                <i class="fas fa-trash-alt"></i> Limpar Histórico
+              </button>
+            </div>
+          </div>
+          
+          <p style="font-size: 0.88rem; color: #555; margin-bottom: 15px; font-style: normal; line-height: 1.5;">
+            Rastreamento detalhado de cada operação realizada no sistema: reinicializações do container, conexões com o banco de dados, alterações de produtos, uploads de fotos e ativação de fallbacks.
+          </p>
+
+          <!-- FILTERS BAR -->
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; align-items: center;">
+            <input type="text" id="filter-log-search" class="admin-search-input" placeholder="Filtrar mensagem de log..." style="max-width: 260px;">
+            
+            <select id="filter-log-level" class="admin-search-input" style="width: auto;">
+              <option value="ALL">Todos os Níveis</option>
+              <option value="INFO">INFO</option>
+              <option value="AUDIT">AUDIT (Ações do Admin)</option>
+              <option value="WARN">WARN (Avisos/Fallbacks)</option>
+              <option value="ERROR">ERROR (Erros)</option>
+              <option value="DB">DATABASE (Banco de Dados)</option>
+            </select>
+
+            <select id="filter-log-category" class="admin-search-input" style="width: auto;">
+              <option value="ALL">Todas as Categorias</option>
+              <option value="DATABASE">DATABASE</option>
+              <option value="STORAGE">STORAGE / ARQUIVOS</option>
+              <option value="ADMIN_ACTION">ADMIN_ACTION</option>
+              <option value="LIFECYCLE">LIFECYCLE / SERVIDOR</option>
+              <option value="FALLBACK">FALLBACK / SEGURANÇA</option>
+              <option value="AUTH">AUTH / CREDENCIAIS</option>
+            </select>
+
+            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #555; cursor: pointer; user-select: none;">
+              <input type="checkbox" id="toggle-auto-refresh-logs" checked style="accent-color: #5c1838;">
+              <span>Auto-atualizar (5s)</span>
+            </label>
+          </div>
+
+          <!-- LOGS CONTAINER -->
+          <div id="logs-container" style="background: #1e1e24; color: #e0e0e0; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 0.83rem; padding: 14px; border-radius: 8px; max-height: 520px; overflow-y: auto; box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);">
+            <!-- Dynamic log rows -->
+            <div style="color: #888; text-align: center; padding: 20px;">Carregando logs do sistema...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: LIXEIRA -->
+      <div id="tab-lixeira" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <div>
+              <span>Lixeira de Produtos</span>
+              <p style="font-size: 0.82rem; color: #666; margin: 4px 0 0 0; font-style: normal; font-family: inherit; text-align: left;">
+                Os itens excluídos são armazenados na Lixeira por até <strong>30 dias</strong> antes do expurgo permanente automático.
+              </p>
+            </div>
+            <button id="btn-empty-trash" class="admin-btn admin-btn-danger admin-btn-sm">
+              <i class="fas fa-trash-alt"></i> Esvaziar Lixeira
+            </button>
+          </div>
+          <div id="grid-lixeira" class="product-admin-grid">
+            <!-- Dynamic trash product cards -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: ADD / EDIT PRODUCT -->
+  <div id="modal-product" class="admin-modal-overlay">
+    <div class="admin-modal">
+      <div class="modal-header">
+        <h3 id="modal-product-title">Novo Produto</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form id="form-product">
+        <input type="hidden" id="prod-id">
+        <input type="hidden" id="prod-setor">
+        <input type="hidden" id="prod-categoria">
+
+        <div class="form-group">
+          <label for="prod-descricao">Descrição / Nome do Produto *</label>
+          <input type="text" id="prod-descricao" class="form-control" placeholder="Ex: Soutien Carol - Ref: 168" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label for="prod-valor">Valor Original (R$) *</label>
+            <input type="number" step="0.01" id="prod-valor" class="form-control" placeholder="Ex: 62.90" required>
+          </div>
+          <div class="form-group" id="group-prod-quantidade">
+            <label for="prod-quantidade">Qtd. Estoque *</label>
+            <input type="number" min="0" id="prod-quantidade" class="form-control" value="1" placeholder="Padrão: 1">
+          </div>
+          <div class="form-group">
+            <label for="prod-status">Status *</label>
+            <select id="prod-status" class="form-control">
+              <option value="disponivel">Disponível</option>
+              <option value="vendido">Vendido</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- CONFIGURAÇÃO DE PROMOÇÃO -->
+        <div style="background: rgba(229, 57, 53, 0.05); padding: 12px; border-radius: 8px; border: 1px solid rgba(229, 57, 53, 0.2); margin-bottom: 15px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <input type="checkbox" id="prod-promocao" style="width: 18px; height: 18px; cursor: pointer;">
+            <label for="prod-promocao" style="font-weight: 700; color: #d32f2f; margin: 0; cursor: pointer; font-size: 0.95rem;">
+              <i class="fas fa-percentage"></i> Colocar Produto em Promoção
+            </label>
+          </div>
+          <div id="group-preco-promocional" style="display: none; margin-top: 10px;">
+            <label for="prod-preco-promocional" style="font-size: 0.85rem; font-weight: 600; color: #444;">Preço Promocional (R$)</label>
+            <input type="number" step="0.01" id="prod-preco-promocional" class="form-control" placeholder="Ex: 49.90">
+          </div>
+        </div>
+
+        <!-- CONFIGURAÇÃO DE OPÇÕES (TAMANHO E COR INDEXADOS) -->
+        <div style="background: rgba(92, 24, 56, 0.03); padding: 14px; border-radius: 8px; border: 1px solid rgba(92, 24, 56, 0.15); margin-bottom: 15px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <div style="font-weight: 700; color: #5c1838; font-size: 0.92rem;">
+              <i class="fas fa-layer-group"></i> Tamanhos e Cores Indexados (Variações)
+            </div>
+            <button type="button" id="btn-add-variacao" class="admin-btn admin-btn-secondary admin-btn-sm" style="font-size: 0.8rem; padding: 4px 10px;">
+              <i class="fas fa-plus"></i> Adicionar Variação
+            </button>
+          </div>
+          <p style="font-size: 0.8rem; color: #666; margin: 0 0 10px 0; line-height: 1.35;">
+            Defina as cores disponíveis para cada tamanho (ex: Tamanho: <strong>G, GG</strong> | Cores: <strong>Vermelho</strong> / Tamanho: <strong>P</strong> | Cores: <strong>Verde, Amarelo</strong>).
+          </p>
+
+          <div id="variacoes-container" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px;">
+            <!-- Linhas de variações dinâmicas geradas via admin.js -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="prod-info">Informações / Detalhes Adicionais</label>
+          <textarea id="prod-info" class="form-control" rows="2" placeholder="Ex: Peça em renda trabalhada. Pagamento via PIX ou cartão."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Fotos do Produto (Permite Múltiplas)</label>
+          <div style="display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
+            <input type="file" id="prod-file-input" accept="image/*" multiple style="display: none;">
+            <button type="button" id="btn-upload-prod-img" class="admin-btn admin-btn-secondary">
+              <i class="fas fa-upload"></i> Enviar Foto
+            </button>
+            <button type="button" id="btn-choose-existing-img" class="admin-btn admin-btn-secondary">
+              <i class="fas fa-folder-open"></i> Escolher do Banco
+            </button>
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="prod-url-manual" class="form-control" placeholder="Ou cole o caminho/URL da imagem e pressione Enter">
+          </div>
+
+          <div id="prod-images-preview" class="image-preview-list">
+            <!-- Dynamic Image Thumbnails -->
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+          <button type="button" class="admin-btn admin-btn-secondary modal-close-btn-action">Cancelar</button>
+          <button type="submit" class="admin-btn admin-btn-primary"><i class="fas fa-save"></i> Salvar Produto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD LINK -->
+  <div id="modal-link" class="admin-modal-overlay">
+    <div class="admin-modal" style="max-width: 540px;">
+      <div class="modal-header">
+        <h3 id="modal-link-title">Adicionar Link da Home</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form id="form-link">
+        <input type="hidden" id="link-id">
+        <input type="hidden" id="link-url-original">
+        <input type="hidden" id="link-tipo-original">
+
+        <div class="form-group">
+          <label for="link-titulo">Título da Página / Link *</label>
+          <input type="text" id="link-titulo" class="form-control" placeholder="Ex: Minha Loja - Boticário" required>
+        </div>
+
+        <!-- CONTROLE DE VISIBILIDADE -->
+        <div style="background: rgba(92, 24, 56, 0.04); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(92, 24, 56, 0.15); margin-bottom: 15px;">
+          <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; margin: 0; user-select: none;">
+            <input type="checkbox" id="link-oculto" style="width: 18px; height: 18px; accent-color: #5c1838; cursor: pointer;">
+            <div>
+              <div style="font-weight: 700; color: #5c1838; font-size: 0.92rem;">
+                <i class="fas fa-eye-slash"></i> Ocultar esta página no catálogo
+              </div>
+              <div style="font-size: 0.8rem; color: #666; margin-top: 2px;">
+                Se marcado, este botão não aparecerá na tela inicial para os clientes.
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="link-tipo">Tipo / Destino do Link *</label>
+          <select id="link-tipo" class="form-control">
+            <option value="interno">Página Interna do Catálogo</option>
+            <option value="externo">Link Externo (Abre em nova aba / site)</option>
+            <option value="manutencao">🛠️ Página de Manutenção (manutencao.html)</option>
+          </select>
+        </div>
+
+        <!-- SELEÇÃO DE PÁGINAS PRONTAS / DISPONÍVEIS -->
+        <div class="form-group" style="background: rgba(92, 24, 56, 0.04); padding: 12px; border-radius: 8px; border: 1px solid rgba(92, 24, 56, 0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label for="select-preset-pagina" style="font-weight: 700; color: #5c1838; margin-bottom: 0; font-size: 0.85rem;">
+              <i class="fas fa-list-alt"></i> Opções de Páginas Disponíveis (Seleção Rápida):
+            </label>
+          </div>
+          <select id="select-preset-pagina" class="form-control" style="font-size: 0.88rem; background-color: #ffffff;">
+            <option value="">-- Selecione uma página para preencher o endereço --</option>
+            <optgroup label="✨ Páginas Principais">
+              <option value="pages/semijoias/index.html" data-tipo="interno" data-titulo="Catálogo Semi-Joias Styllus">Catálogo Principal de Semi-Joias (pages/semijoias/index.html)</option>
+              <option value="pages/lingeries/index.html" data-tipo="interno" data-titulo="Catálogo Lingeries Bella">Catálogo Principal de Lingeries (pages/lingeries/index.html)</option>
+              <option value="manutencao.html" data-tipo="manutencao">🛠️ Página de Manutenção (manutencao.html)</option>
+            </optgroup>
+            <optgroup label="💍 Páginas de Semi-Joias por Categoria">
+              <option value="pages/semijoias/aneis/aneis.html" data-tipo="interno">Anéis (pages/semijoias/aneis/aneis.html)</option>
+              <option value="pages/semijoias/brincos/brincos.html" data-tipo="interno">Brincos (pages/semijoias/brincos/brincos.html)</option>
+              <option value="pages/semijoias/brincoArgola/brincoArgola.html" data-tipo="interno">Brinco Argola (pages/semijoias/brincoArgola/brincoArgola.html)</option>
+              <option value="pages/semijoias/colares/colares.html" data-tipo="interno">Colares (pages/semijoias/colares/colares.html)</option>
+              <option value="pages/semijoias/correntes/correntes.html" data-tipo="interno">Correntes (pages/semijoias/correntes/correntes.html)</option>
+              <option value="pages/semijoias/conjuntos/conjuntos.html" data-tipo="interno">Conjuntos (pages/semijoias/conjuntos/conjuntos.html)</option>
+              <option value="pages/semijoias/pulseiras/pulseiras.html" data-tipo="interno">Pulseiras (pages/semijoias/pulseiras/pulseiras.html)</option>
+              <option value="pages/semijoias/pingentes/pingentes.html" data-tipo="interno">Pingentes (pages/semijoias/pingentes/pingentes.html)</option>
+              <option value="pages/semijoias/tornozeleiras/tornozeleiras.html" data-tipo="interno">Tornozeleiras (pages/semijoias/tornozeleiras/tornozeleiras.html)</option>
+              <option value="pages/semijoias/bracelete/bracelete.html" data-tipo="interno">Braceletes (pages/semijoias/bracelete/bracelete.html)</option>
+            </optgroup>
+            <optgroup label="👙 Páginas de Lingeries por Categoria">
+              <option value="pages/lingeries/calcinhas/calcinhas.html" data-tipo="interno">Calcinhas (pages/lingeries/calcinhas/calcinhas.html)</option>
+              <option value="pages/lingeries/soutiens/soutiens.html" data-tipo="interno">Soutiens (pages/lingeries/soutiens/soutiens.html)</option>
+              <option value="pages/lingeries/conjunto/conjuntos.html" data-tipo="interno">Conjuntos (pages/lingeries/conjunto/conjuntos.html)</option>
+              <option value="pages/lingeries/cuecas/cuecas.html" data-tipo="interno">Cuecas (pages/lingeries/cuecas/cuecas.html)</option>
+              <option value="pages/lingeries/infantil/infantil.html" data-tipo="interno">Infantil (pages/lingeries/infantil/infantil.html)</option>
+              <option value="pages/lingeries/meias/meias.html" data-tipo="interno">Meias (pages/lingeries/meias/meias.html)</option>
+              <option value="pages/lingeries/pijamas/pijamas.html" data-tipo="interno">Pijamas (pages/lingeries/pijamas/pijamas.html)</option>
+              <option value="pages/lingeries/camisolas/camisolas.html" data-tipo="interno">Camisolas (pages/lingeries/camisolas/camisolas.html)</option>
+              <option value="pages/lingeries/sambacancao/sambacancao.html" data-tipo="interno">Samba Canção (pages/lingeries/sambacancao/sambacancao.html)</option>
+              <option value="pages/lingeries/topper/topper.html" data-tipo="interno">Toppers (pages/lingeries/topper/topper.html)</option>
+              <option value="pages/lingeries/bermuda/bermuda.html" data-tipo="interno">Bermudas (pages/lingeries/bermuda/bermuda.html)</option>
+              <option value="pages/lingeries/shortanagua/shortanagua.html" data-tipo="interno">Short Anágua (pages/lingeries/shortanagua/shortanagua.html)</option>
+            </optgroup>
+            <optgroup label="🌐 Links Externos Pré-cadastrados">
+              <option value="https://minhaloja.grupoboticario.com.br/carollalves" data-tipo="externo" data-titulo="Minha Loja - Grupo Boticário">Minha Loja - Boticário</option>
+              <option value="https://loja.marykay.com.br/minha-vitrine?slug=carolalvesmk" data-tipo="externo" data-titulo="Minha Loja - Mary Kay">Minha Loja - Mary Kay</option>
+              <option value="https://agreements.marykayintouch.com.br/r/c7oj5g1k" data-tipo="externo" data-titulo="Faça seu cadastro - Mary Kay">Cadastro Mary Kay</option>
+              <option value="https://catalogoportaaporta.cancaonova.com/gv-editora/cancao-nova/catalogo/" data-tipo="externo" data-titulo="Catálogo Porta a Porta">Catálogo Porta a Porta</option>
+              <option value="https://collshp.com/calummara" data-tipo="externo" data-titulo="Coleção Shopee">Coleção Shopee</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; flex-wrap: wrap; gap: 6px;">
+            <label for="link-url" style="margin-bottom: 0;">URL / Endereço Destino *</label>
+            <div style="display: flex; gap: 6px;">
+              <button type="button" id="btn-quick-original" class="admin-btn admin-btn-success admin-btn-sm" style="display: none; font-size: 0.75rem; padding: 2px 8px;">
+                <i class="fas fa-undo"></i> <span id="span-original-btn-text">Voltar p/ Original</span>
+              </button>
+              <button type="button" id="btn-quick-manutencao" class="admin-btn admin-btn-secondary admin-btn-sm" style="font-size: 0.75rem; padding: 2px 8px;">
+                <i class="fas fa-tools"></i> Usar Manutenção
+              </button>
+            </div>
+          </div>
+          <input type="text" id="link-url" list="lista-todas-paginas" class="form-control" placeholder="Digite ou selecione acima (ex: pages/semijoias/index.html)" required>
+          <datalist id="lista-todas-paginas">
+            <option value="pages/semijoias/index.html">Catálogo Semi-Joias Styllus</option>
+            <option value="pages/lingeries/index.html">Catálogo Lingeries Bella</option>
+            <option value="manutencao.html">Página de Manutenção</option>
+            <option value="pages/semijoias/aneis/aneis.html">Anéis</option>
+            <option value="pages/semijoias/brincos/brincos.html">Brincos</option>
+            <option value="pages/semijoias/brincoArgola/brincoArgola.html">Brinco Argola</option>
+            <option value="pages/semijoias/colares/colares.html">Colares</option>
+            <option value="pages/semijoias/correntes/correntes.html">Correntes</option>
+            <option value="pages/semijoias/conjuntos/conjuntos.html">Conjuntos Semi-Joias</option>
+            <option value="pages/semijoias/pulseiras/pulseiras.html">Pulseiras</option>
+            <option value="pages/semijoias/pingentes/pingentes.html">Pingentes</option>
+            <option value="pages/semijoias/tornozeleiras/tornozeleiras.html">Tornozeleiras</option>
+            <option value="pages/semijoias/bracelete/bracelete.html">Braceletes</option>
+            <option value="pages/lingeries/calcinhas/calcinhas.html">Calcinhas</option>
+            <option value="pages/lingeries/soutiens/soutiens.html">Soutiens</option>
+            <option value="pages/lingeries/conjunto/conjuntos.html">Conjuntos Lingerie</option>
+            <option value="pages/lingeries/cuecas/cuecas.html">Cuecas</option>
+            <option value="pages/lingeries/infantil/infantil.html">Infantil</option>
+            <option value="pages/lingeries/meias/meias.html">Meias</option>
+            <option value="pages/lingeries/pijamas/pijamas.html">Pijamas</option>
+            <option value="pages/lingeries/camisolas/camisolas.html">Camisolas</option>
+            <option value="pages/lingeries/sambacancao/sambacancao.html">Samba Canção</option>
+            <option value="pages/lingeries/topper/topper.html">Toppers</option>
+            <option value="pages/lingeries/bermuda/bermuda.html">Bermudas</option>
+            <option value="pages/lingeries/shortanagua/shortanagua.html">Short Anágua</option>
+            <option value="https://minhaloja.grupoboticario.com.br/carollalves">Minha Loja - Boticário</option>
+            <option value="https://loja.marykay.com.br/minha-vitrine?slug=carolalvesmk">Minha Loja - Mary Kay</option>
+            <option value="https://agreements.marykayintouch.com.br/r/c7oj5g1k">Cadastro Mary Kay</option>
+            <option value="https://catalogoportaaporta.cancaonova.com/gv-editora/cancao-nova/catalogo/">Catálogo Porta a Porta</option>
+            <option value="https://collshp.com/calummara">Coleção Shopee</option>
+          </datalist>
+        </div>
+
+        <!-- ATALHOS RÁPIDOS EM CHIPS -->
+        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: -5px; margin-bottom: 10px;">
+          <button type="button" class="btn-preset-chip" data-url="pages/semijoias/index.html" data-tipo="interno" data-titulo="Catálogo Semi-Joias Styllus" style="background: #fdf2f7; border: 1px solid #f3c2dc; color: #5c1838; padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; cursor: pointer; font-weight: 600;">
+            <i class="fas fa-gem"></i> Semi-Joias
+          </button>
+          <button type="button" class="btn-preset-chip" data-url="pages/lingeries/index.html" data-tipo="interno" data-titulo="Catálogo Lingeries Bella" style="background: #fdf2f7; border: 1px solid #f3c2dc; color: #5c1838; padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; cursor: pointer; font-weight: 600;">
+            <i class="fas fa-female"></i> Lingeries
+          </button>
+          <button type="button" class="btn-preset-chip" data-url="manutencao.html" data-tipo="manutencao" style="background: #fff3f3; border: 1px solid #ffcdd2; color: #c62828; padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; cursor: pointer; font-weight: 600;">
+            <i class="fas fa-tools"></i> Manutenção
+          </button>
+        </div>
+
+        <div id="info-manutencao-link" style="display: none; background: rgba(229, 57, 53, 0.08); border: 1px solid rgba(229, 57, 53, 0.3); border-radius: 6px; padding: 12px; margin-top: 10px; font-size: 0.84rem; color: #c62828;">
+          <div style="display: flex; align-items: flex-start; gap: 8px;">
+            <i class="fas fa-tools" style="font-size: 1.1rem; margin-top: 2px;"></i>
+            <div style="flex: 1;">
+              <strong>Modo Manutenção Ativo:</strong> Ao clicar neste botão no site, os clientes serão direcionados para <code>manutencao.html</code>.
+              <div id="div-btn-restaurar-aviso" style="margin-top: 8px;">
+                <button type="button" id="btn-revert-from-banner" class="admin-btn admin-btn-sm admin-btn-success" style="font-size: 0.8rem; padding: 4px 10px;">
+                  <i class="fas fa-undo"></i> Desativar Manutenção e Voltar p/ Página Original
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+          <button type="button" class="admin-btn admin-btn-secondary modal-close-btn-action">Cancelar</button>
+          <button type="submit" class="admin-btn admin-btn-primary"><i class="fas fa-save"></i> Salvar Link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: IMAGE PICKER FROM BANK -->
+  <div id="modal-picker" class="admin-modal-overlay">
+    <div class="admin-modal" style="max-width: 800px;">
+      <div class="modal-header">
+        <h3>Escolher Imagem do Banco</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div id="picker-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; max-height: 450px; overflow-y: auto;">
+        <!-- Images dynamically loaded -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW CATEGORY -->
+  <div id="modal-category" class="admin-modal-overlay">
+    <div class="admin-modal" style="max-width: 450px;">
+      <div class="modal-header">
+        <h3>Nova Categoria</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form id="form-category">
+        <div class="form-group">
+          <label for="cat-setor">Setor do Catálogo *</label>
+          <select id="cat-setor" class="form-control" required>
+            <option value="semijoias">Semijoias</option>
+            <option value="lingeries">Lingeries</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cat-nome">Nome da Categoria *</label>
+          <input type="text" id="cat-nome" class="form-control" placeholder="Ex: Tornozeleiras Especiais" required>
+        </div>
+        <div class="form-group">
+          <label for="cat-id">Identificador Único (Slug) *</label>
+          <input type="text" id="cat-id" class="form-control" placeholder="Ex: tornozeleirasespeciais" required>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+          <button type="button" class="admin-btn admin-btn-secondary modal-close-btn-action">Cancelar</button>
+          <button type="submit" id="btn-submit-category" class="admin-btn admin-btn-primary"><i class="fas fa-check"></i> Criar Categoria</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: CHANGE CREDENTIALS & WHATSAPP -->
+  <div id="modal-pin" class="admin-modal-overlay">
+    <div class="admin-modal" style="max-width: 460px;">
+      <div class="modal-header">
+        <h3><i class="fab fa-whatsapp" style="color: #25D366;"></i> Configurações & Credenciais</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form id="form-pin" autocomplete="off">
+        <div class="form-group" style="background: rgba(37, 211, 102, 0.08); padding: 12px; border-radius: 8px; border: 1px solid rgba(37, 211, 102, 0.3);">
+          <label for="whatsapp-admin" style="font-weight: 700; color: #128C7E;">
+            <i class="fab fa-whatsapp"></i> WhatsApp para Receber Pedidos do Carrinho
+          </label>
+          <input type="text" id="whatsapp-admin" class="form-control" placeholder="Ex: 5511999999999 (com DDD)" autocomplete="off">
+          <div style="font-size: 0.78rem; color: #555; margin-top: 4px;">
+            Número que receberá a lista de compras quando o cliente clicar em <em>"Enviar Pedido no WhatsApp"</em>.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email-new">Novo E-mail do Administrador</label>
+          <input type="email" id="email-new" class="form-control" placeholder="ex: seuemail@exemplo.com" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="pin-new">Novo PIN (deixe em branco se não quiser alterar)</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="pin-new" class="form-control" placeholder="Mínimo de 4 dígitos" autocomplete="new-password">
+            <button type="button" class="btn-toggle-password" data-target="pin-new" title="Visualizar senha" aria-label="Visualizar senha">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="form-group" style="border-top: 1px solid #eee; padding-top: 12px; margin-top: 16px;">
+          <label for="pin-current" style="color: var(--admin-danger);">PIN Atual (para confirmação) *</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="pin-current" class="form-control" required placeholder="Digite seu PIN atual" autocomplete="current-password">
+            <button type="button" class="btn-toggle-password" data-target="pin-current" title="Visualizar senha" aria-label="Visualizar senha">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+          <button type="button" class="admin-btn admin-btn-secondary modal-close-btn-action">Cancelar</button>
+          <button type="submit" class="admin-btn admin-btn-primary"><i class="fas fa-save"></i> Salvar Configurações</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL CONFIRMAÇÃO DE EXCLUSÃO -->
+  <div id="modal-confirm-delete" class="admin-modal-overlay">
+    <div class="admin-modal" style="max-width: 450px; text-align: center;">
+      <div style="margin-bottom: 15px; color: var(--admin-danger); font-size: 3rem;">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <h3 id="confirm-delete-title" style="margin-bottom: 10px; color: #333;">Confirmar Exclusão</h3>
+      <p id="confirm-delete-message" style="color: #666; font-size: 0.95rem; margin-bottom: 25px; font-style: normal; text-align: center;">
+        Tem certeza que deseja mover este produto para a Lixeira?
+      </p>
+      <div style="display: flex; justify-content: center; gap: 12px;">
+        <button type="button" class="admin-btn admin-btn-secondary" id="btn-cancel-delete">Cancelar</button>
+        <button type="button" class="admin-btn admin-btn-danger" id="btn-confirm-delete-action">
+          <i class="fas fa-trash-alt"></i> Mover para Lixeira
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: GERENCIAR VENDAS POR VARIAÇÃO -->
+  <div id="modal-sold-variations" class="admin-modal-overlay">
+    <div class="admin-modal" style="max-width: 680px;">
+      <div class="modal-header">
+        <div>
+          <h3 style="margin: 0; color: #5c1838;"><i class="fas fa-tags"></i> Gerenciar Variações e Vendas</h3>
+          <p id="modal-sold-prod-title" style="margin: 4px 0 0 0; font-size: 0.9rem; color: #555; font-weight: 600;"></p>
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+
+      <div style="background: #fff5f8; border: 1px solid #f3c2dc; border-radius: 8px; padding: 12px 14px; margin-bottom: 16px; font-size: 0.85rem; color: #5c1838; line-height: 1.4;">
+        <i class="fas fa-info-circle"></i> Selecione qual item/variação foi vendido. Apenas as variações que continuarem <strong>Disponíveis</strong> aparecerão para os clientes no catálogo.
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; background: #fafafa; padding: 10px 12px; border-radius: 8px; border: 1px solid #eee;">
+        <div id="modal-sold-summary" style="font-size: 0.9rem; font-weight: 700; color: #333;">
+          <!-- Dynamic summary: Ex: 1 de 2 variações disponíveis -->
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" id="btn-mark-all-disp" class="admin-btn admin-btn-success admin-btn-sm" style="font-size: 0.8rem; padding: 5px 12px;">
+            <i class="fas fa-check-double"></i> Todas Disponíveis
+          </button>
+          <button type="button" id="btn-mark-all-sold" class="admin-btn admin-btn-danger admin-btn-sm" style="font-size: 0.8rem; padding: 5px 12px;">
+            <i class="fas fa-times-circle"></i> Todas Vendidas
+          </button>
+        </div>
+      </div>
+
+      <div id="modal-sold-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 380px; overflow-y: auto; padding: 4px;">
+        <!-- Dynamic variation sold items -->
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+        <button type="button" class="admin-btn admin-btn-secondary modal-close-btn-action">Cancelar</button>
+        <button type="button" id="btn-save-sold-variations" class="admin-btn admin-btn-primary">
+          <i class="fas fa-save"></i> Salvar Alterações
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

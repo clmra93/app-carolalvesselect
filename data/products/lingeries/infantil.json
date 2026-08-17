@@ -1,0 +1,88 @@
+[
+  {
+    "id": 2,
+    "url": "/assets/img/uploads/1786825174136_IMG_20260812_083910079.jpg",
+    "cores": [
+      "Super-Man",
+      "Calvin Klein"
+    ],
+    "valor": 14.9,
+    "status": "disponivel",
+    "tamanhos": [
+      "GG",
+      "G"
+    ],
+    "descricao": "BOX INFANTIL ESTAMPADA RCL - REF: 439",
+    "variacoes": [
+      {
+        "foto": "",
+        "cores": [
+          "Super-Man"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "GG"
+        ],
+        "quantidade": 1
+      },
+      {
+        "foto": "",
+        "cores": [
+          "Calvin Klein"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "G"
+        ],
+        "quantidade": 1
+      }
+    ],
+    "emPromocao": false,
+    "quantidade": 2,
+    "informacoes": "Valor referente a unidade.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições.",
+    "precoPromocional": null
+  },
+  {
+    "id": 1,
+    "url": "/assets/img/uploads/1786824317066_IMG_20260812_083829789.jpg",
+    "cores": [
+      "Super Heróis",
+      "Mickey"
+    ],
+    "valor": 16.9,
+    "status": "disponivel",
+    "tamanhos": [
+      "GG",
+      "G"
+    ],
+    "descricao": "CUECA BOX INFANTIL ANIMADA - REF: 146",
+    "variacoes": [
+      {
+        "foto": "",
+        "cores": [
+          "Super Heróis"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "GG"
+        ],
+        "quantidade": 1
+      },
+      {
+        "foto": "",
+        "cores": [
+          "Mickey"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "G"
+        ],
+        "quantidade": 1
+      }
+    ],
+    "emPromocao": false,
+    "quantidade": 2,
+    "informacoes": "Valor referente a unidade.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições.",
+    "precoPromocional": null
+  }
+]

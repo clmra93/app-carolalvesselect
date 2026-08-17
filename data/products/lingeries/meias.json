@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "url": "/assets/img/uploads/1786892496349_IMG_20260812_151525368.jpg",
+    "cores": [
+      "teste"
+    ],
+    "valor": 1,
+    "status": "disponivel",
+    "tamanhos": [
+      "A"
+    ],
+    "descricao": "teste",
+    "variacoes": [
+      {
+        "foto": "",
+        "cores": [
+          "teste"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "A"
+        ],
+        "quantidade": 1
+      }
+    ],
+    "emPromocao": false,
+    "quantidade": 1,
+    "informacoes": "teste",
+    "precoPromocional": null
+  }
+]

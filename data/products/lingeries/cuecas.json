@@ -1,0 +1,87 @@
+[
+  {
+    "id": 2,
+    "url": "/assets/img/uploads/1786824086970_IMG_20260812_083635540.jpg",
+    "cores": [
+      "Vermelho",
+      "Vinho"
+    ],
+    "valor": 26.9,
+    "status": "disponivel",
+    "tamanhos": [
+      "GG",
+      "G"
+    ],
+    "descricao": "CUECA BOX TOMMY RCL - REF: 426",
+    "variacoes": [
+      {
+        "foto": "",
+        "cores": [
+          "Vermelho"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "GG"
+        ],
+        "quantidade": 1
+      },
+      {
+        "foto": "",
+        "cores": [
+          "Vinho"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "G"
+        ],
+        "quantidade": 1
+      }
+    ],
+    "emPromocao": false,
+    "quantidade": 2,
+    "informacoes": "Valor referente a unidade.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições.",
+    "precoPromocional": null
+  },
+  {
+    "id": 1,
+    "url": "/assets/img/uploads/1786823174128_IMG_20260812_083357802.jpg",
+    "cores": [
+      "Verde",
+      "Azul"
+    ],
+    "valor": 26.9,
+    "status": "disponivel",
+    "tamanhos": [
+      "G"
+    ],
+    "descricao": "CUECA AD BOX BIOCOLOR - REF: 272",
+    "variacoes": [
+      {
+        "foto": "",
+        "cores": [
+          "Verde"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "G"
+        ],
+        "quantidade": 1
+      },
+      {
+        "foto": "",
+        "cores": [
+          "Azul"
+        ],
+        "vendido": false,
+        "tamanhos": [
+          "G"
+        ],
+        "quantidade": 1
+      }
+    ],
+    "emPromocao": false,
+    "quantidade": 2,
+    "informacoes": "Valor referente a unidade.\nFormas de pagamento: PIX, cartão de crédito e débito.\nEntregas para todo Brasil, consulte condições.",
+    "precoPromocional": null
+  }
+]

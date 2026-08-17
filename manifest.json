@@ -1,0 +1,57 @@
+{
+  "name": "Carol Alves - Catálogo & Loja",
+  "short_name": "Carol Alves",
+  "description": "Catálogo virtual de Semijoias, Lingeries e Produtos Carol Alves.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fdf8fa",
+  "theme_color": "#5c1838",
+  "lang": "pt-BR",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catálogo Semijoias",
+      "short_name": "Semijoias",
+      "description": "Ver peças de semijoias Styllus",
+      "url": "/pages/semijoias/index.html",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Catálogo Lingeries",
+      "short_name": "Lingeries",
+      "description": "Ver catálogo de lingeries Bella",
+      "url": "/pages/lingeries/index.html",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Painel Administrativo",
+      "short_name": "Admin",
+      "description": "Acessar painel de controle",
+      "url": "/pages/admin/index.html",
+      "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
